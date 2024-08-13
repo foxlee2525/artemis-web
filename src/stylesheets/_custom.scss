@@ -1,0 +1,323 @@
+// 自定義字體樣式
+body,
+html {
+  font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+.nav-item {
+  font-weight: 700;
+}
+
+// 自定義陰影樣式
+.shadow-custom-md {
+  box-shadow: 0 0.5625rem 1.625rem rgba($black, 0.125);
+}
+
+// 自定義 nav-link 樣式
+.nav-link {
+  color: $nav-link-color !important;
+  text-decoration: $link-decoration;
+
+  &:hover {
+    color: $link-hover-color !important;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+// 自定義 nav-toggle
+.navbar-toggle,
+.navbar-toggle:hover,
+.navbar-toggle:active{
+  border: 0;
+  border-color: unset !important;
+}
+
+// ----------------------- 樣式 ----------------------- //
+// 圖片大小
+.object-cover {
+  object-fit: cover;
+}
+
+// 樣式清除
+li, ol, ul {
+  list-style: none;
+}
+
+// 購物車 
+.cart-detail{
+border: 2px solid $gray-400;
+border-top: 0px;
+}
+
+
+// ----------------------- 動畫 ----------------------- //
+// 卡片動畫
+.card {
+  border: none;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+
+tr,
+th,
+td {
+  background-color: transparent !important;
+}
+
+// 產品頁 文字動畫
+.tab-nav-item .nav-link {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease,transform 0.3s ease;
+}
+
+.tab-nav-item .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: $secondary;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.tab-nav-item .nav-link:hover::before,
+.tab-nav-item .nav-link.active::before {
+  transform: scaleX(1);
+}
+
+.tab-nav-item .nav-link.active {
+  color: $secondary !important;
+  transform: scale(1.1);
+  font-weight: $font-weight-bold;
+}
+
+
+// Navbar 文字動畫
+.nav-link{
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.nav-link:hover {
+  color: $secondary !important;
+  transform: scale(1.1);
+  font-weight: $font-weight-bold;
+}
+.nav-link.active {
+  color: $secondary !important;
+  transform: scale(1.1);
+  font-weight: $font-weight-bold;
+}
+
+// 加入購物車按鈕動畫
+.button_addToCart {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-origin: center center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.button_addToCart.bounceBack {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: bounceBack 0.5s ease forwards;
+}
+
+@keyframes bounceBack {
+  0% {
+    transform: scale(0.95);
+  }
+  40% {
+    transform: scale(1.02);
+  }
+  60% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// 彈性動畫
+.button_addToCart.bouncing {
+  animation: bounceBack 0.5s ease forwards;
+}
+
+// 購物車動畫
+.icon-hover{
+  color: $primary !important;
+  transition: color 0.3s ease;
+}
+.icon-hover:hover{
+  color: $secondary !important;
+  animation: shake 0.5s;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+// 購物車 cartDropDown 動畫
+.cart-dropdown {
+  width: 300px;
+  top: 50px;
+  right: 0;
+  z-index: 1000;
+  animation: slideUpFadeOut 0.5s ease-in-out forwards;
+}
+.cart-dropdown.show {
+  animation: slideDownFadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes slideDownFadeIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFadeOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+
+// 卡片溢出動畫
+.horizontal-scroll {
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  position: relative;
+}
+
+.horizontal-scroll .card {
+  flex: 0 0 auto;
+  width: calc(100% / 2 - 1rem);
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease,transform 0.3s ease,color 0.3s ease;
+}
+
+.scroll-button:hover {
+  color: $secondary !important;
+  transform: scale(1.3) translateY(-40%);
+}
+
+.scroll-button.left {
+  left: -2rem;
+}
+
+.scroll-button.right {
+  right: -2rem;
+}
+
+// scroll bar 隱藏動畫
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+.horizontal-scroll {
+  -ms-overflow-style: none;
+}
+
+// MessageToast 元件動畫 
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast.slide-in {
+  animation: slideIn 0.5s forwards;
+}
+
+.toast.slide-out {
+  animation: slideOut 0.5s forwards;
+}
+
+// ----------------------- RWD ----------------------- //
+// RWD
+@media (min-width: 768px) {
+  .w-md-50 {
+    width: 50% !important;
+  }
+
+  .w-md-75 {
+    width: 75% !important;
+  }
+
+  .w-md-100 {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .w-lg-50 {
+    width: 50% !important;
+  }
+  .w-lg-75 {
+    width: 75% !important;
+  }
+  .horizontal-scroll .card {
+    width: calc(100% / 4 - 1rem);
+  }
+  .cart-container,
+  .cart-summery-container {
+    min-height: calc(100vh - 56px - 76px);
+  }
+}
