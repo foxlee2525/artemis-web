@@ -23,7 +23,7 @@ function CheckoutSuccess() {
   }, [orderId]);
 
   return (
-    <div className='container pt-8'>
+    <div className='container'>
       <ul className='d-flex justify-content-around w-md-75 w-100 w-lg-50 mx-auto'>
         <li className='d-flex flex-column align-items-center'>
           <div>1</div>

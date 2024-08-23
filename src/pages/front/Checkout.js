@@ -107,30 +107,7 @@ function Checkout() {
   }, [watchEmail]);
 
   return (
-    <div className='container pt-8'>
-      <ul className='d-flex justify-content-around w-md-75 w-100 w-lg-50 mx-auto'>
-        <li className='d-flex flex-column align-items-center'>
-          <div>1</div>
-          <p>挑選產品</p>
-        </li>
-        <li className='d-flex flex-column align-items-center'>
-          <div>2</div>
-          <p>購物車</p>
-        </li>
-        <li className='d-flex flex-column align-items-center'>
-          <div>3</div>
-          <p>填寫資訊</p>
-        </li>
-        <li className='d-flex flex-column align-items-center'>
-          <div>4</div>
-          <p>確認付款</p>
-        </li>
-        <li className='d-flex flex-column align-items-center'>
-          <div>5</div>
-          <p>完成</p>
-        </li>
-      </ul>
-
+    <div className='container'>
       <div className='pt-5 pb-7'>
         <div className='container'>
           <Link to='/cart' className='btn text-dark py-3 mt-md-0 mt-3'>

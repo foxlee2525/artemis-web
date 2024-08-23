@@ -52,30 +52,7 @@ function Cart() {
   };
 
   return (
-    <div className='container pt-8'>
-      {/* 流程提示 */}
-      <ul className='d-flex justify-content-around w-md-75 w-100 w-lg-50 mx-auto'>
-        <li className='d-flex flex-column align-items-center'>
-          <div>1</div>
-          <p>挑選產品</p>
-        </li>
-        <li className='d-flex flex-column align-items-center'>
-          <div>2</div>
-          <p>購物車</p>
-        </li>
-        <li className='d-flex flex-column align-items-center'>
-          <div>3</div>
-          <p>填寫資訊</p>
-        </li>
-        <li className='d-flex flex-column align-items-center'>
-          <div>4</div>
-          <p>確認付款</p>
-        </li>
-        <li className='d-flex flex-column align-items-center'>
-          <div>5</div>
-          <p>完成</p>
-        </li>
-      </ul>
+    <div className='container'>
       {/* 購物車 */}
       <div className='row justify-content-center'>
         <div className='col-lg-8 col-12 bg-white pt-5 py-lg-5 mb-lg-4 cart-container'>
