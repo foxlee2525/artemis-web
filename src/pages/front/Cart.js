@@ -53,6 +53,7 @@ function Cart() {
 
   return (
     <div className='container pt-8'>
+      {/* 流程提示 */}
       <ul className='d-flex justify-content-around w-md-75 w-100 w-lg-50 mx-auto'>
         <li className='d-flex flex-column align-items-center'>
           <div>1</div>
@@ -89,7 +90,7 @@ function Cart() {
                   key={item.id}
                 >
                   <img
-                    className='rounded-2'
+                    className='rounded-4 p-2'
                     src={item.product.imageUrl}
                     alt=''
                     style={{
@@ -199,7 +200,7 @@ function Cart() {
               </div>
             </div>
             <Link
-              to='/checkout'
+              to='/cart/checkout'
               className={`btn w-100 mt-4 rounded-2 py-3 ${
                 loadingItems.length > 0 ? "btn-primary disabled" : "btn-primary"
               }`}
