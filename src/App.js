@@ -8,10 +8,11 @@ import FrontLayout from "./pages/front/FrontLayout";
 import Home from "./pages/front/Home";
 import Products from "./pages/front/Products";
 import ProductDetail from "./pages/front/ProductDetail";
-import ShoppingLayout from "./pages/front/ShoppingLayout"
+import ShoppingLayout from "./pages/front/ShoppingLayout";
 import Cart from "./pages/front/Cart";
-import CheckOut from "./pages/front/Checkout";
-import CheckoutSuccess from "./pages/front/Checkout-success";
+import Checkout from "./pages/front/Checkout";
+import CheckoutSuccess from "./pages/front/CheckoutSuccess";
+import CheckoutConfirm from "./pages/front/CheckoutConfirm";
 
 function App() {
   return (
@@ -23,9 +24,13 @@ function App() {
           <Route path='product/:id' element={<ProductDetail />}></Route>
           <Route path='cart' element={<ShoppingLayout />}>
             <Route path='' element={<Cart />}></Route>
-            <Route path='checkout' element={<CheckOut />}></Route>
+            <Route path='checkout' element={<Checkout />}></Route>
             <Route
-              path='success/:orderId'
+              path='checkout-confirm/:orderId'
+              element={<CheckoutConfirm />}
+            ></Route>
+            <Route
+              path='checkout-success/:orderId'
               element={<CheckoutSuccess />}
             ></Route>
           </Route>
