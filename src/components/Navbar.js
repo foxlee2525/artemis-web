@@ -24,7 +24,7 @@ function Navbar({ cartData }) {
   }, [handleClickOutSide]);
 
   return (
-    <div className='sticky-top shadow-lg'>
+    <div className='sticky-top shadow-lg bg-white'>
       <div className='container'>
         <nav className='navbar px-0 navbar-expand-lg navbar-light bg-white'>
           {/* toggle */}
