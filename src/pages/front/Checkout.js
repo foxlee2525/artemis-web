@@ -2,6 +2,7 @@ import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { useForm, useWatch } from "react-hook-form";
 import { Input, Select, CheckboxRadio } from "../../components/FormElements";
 import { useEffect, useState } from "react";
+import Loading from "../../components/Loading";
 import axios from "axios";
 
 const localAxios = axios.create({
@@ -12,9 +13,10 @@ function Checkout() {
   const { cartData } = useOutletContext();
   const [addressData, setAddressData] = useState([]);
   const [districts, setDistricts] = useState([]);
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("未選擇付款方式");
   const [userEmail, setUserEmail] = useState("");
   const [fullAddress, setFullAddress] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -26,7 +28,7 @@ function Checkout() {
 
   const onSubmit = async (data) => {
     const { name, email, tel } = data;
-    // console.log(name, email, tel, fullAddress);
+
     const form = {
       data: {
         user: {
@@ -38,13 +40,16 @@ function Checkout() {
       },
     };
     try {
+      setIsLoading(true);
       const res = await axios.post(
         `v2/api/${process.env.REACT_APP_API_PATH}/order`,
-        form
+        form,
       );
-      console.log(res);
-      navigate(`/success/${res.data.orderId}`);
+      // console.log(res);
+      setIsLoading(false);
+      navigate(`/cart/checkout-confirm/${res.data.orderId}`);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -97,7 +102,7 @@ function Checkout() {
   useEffect(() => {
     // 將 city, district, address 串成完整地址
     setFullAddress(
-      `${watchCity || ""} ${watchDistrict || ""} ${watchAddress || ""}`.trim()
+      `${watchCity || ""}${watchDistrict || ""}${watchAddress || ""}`.trim()
     );
   }, [watchCity, watchDistrict, watchAddress]);
 
@@ -108,6 +113,7 @@ function Checkout() {
 
   return (
     <div className='container'>
+      <Loading isLoading={isLoading} />
       <div className='pt-5 pb-7'>
         <div className='container'>
           <Link to='/cart' className='btn text-dark py-3 mt-md-0 mt-3'>
@@ -141,9 +147,9 @@ function Checkout() {
                         </div>
                         <div className='d-flex justify-content-between'>
                           <p className='text-muted mb-0'>
-                            <small>NT$ {item.final_total}</small>
+                            <small>NT$ {item.product.price}</small>
                           </p>
-                          <p className='mb-0'>NT$ {cartData.total}</p>
+                          <p className='mb-0'>NT$ {item.final_total}</p>
                         </div>
                       </div>
                     </div>
@@ -171,7 +177,7 @@ function Checkout() {
                         付款方式
                       </th>
                       <td className='text-end border-0 px-0 pt-0 pb-4'>
-                        {paymentMethod > 0 ? paymentMethod : "未選擇付款方式"}
+                        {paymentMethod}
                       </td>
                     </tr>
                   </tbody>
@@ -356,7 +362,7 @@ function Checkout() {
                       }}
                     ></Input>
                     <p className='mt-4 mb-2'>請選擇付款方式</p>
-                    <div className='form-check mb-2 ps-0'>
+                    <div className='mb-2 ps-0'>
                       <CheckboxRadio
                         type='radio'
                         name='payment'
@@ -368,10 +374,10 @@ function Checkout() {
                         rules={{
                           required: "請選擇付款方式",
                         }}
-                        onClick={() => setPaymentMethod("ATM")}
+                        onChange={() => setPaymentMethod("ATM")}
                       ></CheckboxRadio>
                     </div>
-                    <div className='form-check mb-2 ps-0'>
+                    <div className='mb-2 ps-0'>
                       <CheckboxRadio
                         type='radio'
                         name='payment'
@@ -383,7 +389,7 @@ function Checkout() {
                         rules={{
                           required: "請選擇付款方式",
                         }}
-                        onClick={() => setPaymentMethod("信用卡")}
+                        onChange={() => setPaymentMethod("信用卡")}
                       ></CheckboxRadio>
                     </div>
                     <div className='mt-4 pt-3 border-top'>
@@ -401,8 +407,9 @@ function Checkout() {
                     <button
                       type='submit'
                       className='btn btn-primary mt-3 py-3 w-100 rounded-2'
+                      disabled={isLoading}
                     >
-                      確認訂單
+                      {isLoading ? "提交訂單中..." : "確認訂單"}
                     </button>
                   </form>
                 </div>

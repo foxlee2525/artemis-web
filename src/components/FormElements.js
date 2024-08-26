@@ -7,6 +7,7 @@ export const CheckboxRadio = ({
   rules,
   value,
   name,
+  onChange
 }) => {
   return (
     <>
@@ -18,6 +19,7 @@ export const CheckboxRadio = ({
           id={id}
           value={value}
           {...register(name, rules)}
+          onChange={onChange}
         />
         {/* Radio 使用 Name 欄位 */}
         <label className='form-check-label' htmlFor={id}>
