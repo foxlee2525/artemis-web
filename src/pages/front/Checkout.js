@@ -43,7 +43,7 @@ function Checkout() {
       setIsLoading(true);
       const res = await axios.post(
         `v2/api/${process.env.REACT_APP_API_PATH}/order`,
-        form,
+        form
       );
       // console.log(res);
       setIsLoading(false);
@@ -110,6 +110,12 @@ function Checkout() {
     // 驗證 Email
     setUserEmail(watchEmail);
   }, [watchEmail]);
+
+  useEffect(() => {
+    // 存儲付款方式, 由於 API 沒提供
+    localStorage.setItem("paymentMethod", paymentMethod);
+    // console.log(localStorage.getItem("paymentMethod"));
+  }, [paymentMethod]);
 
   return (
     <div className='container'>
@@ -409,7 +415,7 @@ function Checkout() {
                       className='btn btn-primary mt-3 py-3 w-100 rounded-2'
                       disabled={isLoading}
                     >
-                      {isLoading ? "提交訂單中..." : "確認訂單"}
+                      {isLoading ? "提交資料中..." : "確認資料"}
                     </button>
                   </form>
                 </div>
