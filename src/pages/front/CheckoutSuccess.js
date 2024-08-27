@@ -1,13 +1,26 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
+import RecommendedProducts from "../../components/RecommendedProducts";
 import axios from "axios";
 
 function CheckoutSuccess() {
   const { orderId } = useParams();
   const [orderData, setOrderData] = useState({});
   const paymentMethod = localStorage.getItem("paymentMethod");
+  // for 猜你喜歡 使用
+  const { cartData, getCart } = useOutletContext();
+  const [products, setProducts] = useState([]);
 
-  const getCart = async (orderId) => {
+  const getProducts = async (page = 1) => {
+    const productResult = await axios.get(
+      `/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`
+    );
+    const productData = productResult.data.products;
+    // console.log(productData);
+    setProducts(productData);
+  };
+
+  const getOrder = async (orderId) => {
     try {
       const res = await axios.get(
         `v2/api/${process.env.REACT_APP_API_PATH}/order/${orderId}`
@@ -20,8 +33,12 @@ function CheckoutSuccess() {
   };
 
   useEffect(() => {
-    getCart(orderId);
+    getOrder(orderId);
   }, [orderId]);
+
+  useEffect(() => {
+    getProducts(1);
+  }, []);
 
   return (
     <div className='container'>
@@ -124,6 +141,11 @@ function CheckoutSuccess() {
           </div>
         </div>
       </div>
+      <RecommendedProducts
+        products={products}
+        getCart={getCart}
+        cartData={cartData}
+      />
     </div>
   );
 }

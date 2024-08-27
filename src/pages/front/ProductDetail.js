@@ -1,10 +1,9 @@
-import { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { NavLink, useOutletContext, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createAsyncMessage } from "../../slice/messageSlice";
-
-import ProductCard from "../../components/ProductCard";
+import RecommendedProducts from "../../components/RecommendedProducts";
+import axios from "axios";
 
 function ProductDetail({}) {
   const [product, setProduct] = useState({});
@@ -13,11 +12,9 @@ function ProductDetail({}) {
   const [activeTab, setActiveTab] = useState("description");
   const [descriptionArray, setDescriptionArray] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   const { id } = useParams();
-  const { getCart } = useOutletContext();
-  const scrollContainerRef = useRef(null);
+  const { cartData, getCart } = useOutletContext();
   const dispatch = useDispatch();
 
   const getProduct = async (id) => {
@@ -86,53 +83,6 @@ function ProductDetail({}) {
     const parts = content.split("-");
     return parts.length > 1 ? parts[1].trim() : parts[0].trim();
   };
-
-  // 底部""猜你喜歡""卡片左右滑動
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -scrollContainerRef.current.clientWidth,
-        behavior: "smooth",
-      });
-      setScrollPosition(
-        scrollContainerRef.current.scrollLeft -
-          scrollContainerRef.current.scrollRight
-      );
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: scrollContainerRef.current.clientWidth,
-        behavior: "smooth",
-      });
-      setScrollPosition(
-        scrollContainerRef.current.scrollLeft +
-          scrollContainerRef.current.scrollRight
-      );
-    }
-  };
-
-  const handleScroll = () => {
-    if (scrollContainerRef.current) {
-      setScrollPosition(scrollContainerRef.current.scrollLeft);
-    }
-  };
-
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.addEventListener("scroll", handleScroll);
-      return () => {
-        if (scrollContainerRef.current) {
-          scrollContainerRef.current.removeEventListener(
-            "scroll",
-            handleScroll
-          );
-        }
-      };
-    }
-  }, []);
 
   if (!product) {
     return <div>Loading...</div>; // 或者顯示其他的加載指示器
@@ -233,7 +183,7 @@ function ProductDetail({}) {
           </button>
         </div>
       </div>
-      <div className='container pt-2'>
+      <div className='container mb-10 pt-2'>
         <ul className='nav nav-tabs fs-5 d-flex justify-content-around border-bottom border-gray'>
           <li className='tab-nav-item'>
             <button
@@ -368,41 +318,12 @@ function ProductDetail({}) {
           </div>
         </div>
       </div>
-      <div className='container mt-10 mb-4'>
-        <h3 className='text text-center text-primary border-bottom border-gray pb-3 mb-4'>
-          猜您喜歡
-        </h3>
-        <div className='position-relative'>
-          <button
-            className={`scroll-button left fs-2 ${
-              scrollPosition > 0 ? "opacity-100" : ""
-            }`}
-            onClick={scrollLeft}
-          >
-            <i className='bi bi-arrow-left-circle-fill'></i>
-          </button>
-          <div className='horizontal-scroll ' ref={scrollContainerRef}>
-            {products.slice(0, 8).map((product) => (
-              <div className='card' key={product.id}>
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
-          <button
-            className={`scroll-button right fs-2 ${
-              scrollContainerRef.current &&
-              scrollPosition <
-                scrollContainerRef.current.scrollWidth -
-                  scrollContainerRef.current.clientWidth
-                ? "opacity-100"
-                : ""
-            }`}
-            onClick={scrollRight}
-          >
-            <i className='bi bi-arrow-right-circle-fill'></i>
-          </button>
-        </div>
-      </div>
+      {/* 猜你喜歡 */}
+      <RecommendedProducts
+        products={products}
+        getCart={getCart}
+        cartData={cartData}
+      />
     </div>
   );
 }

@@ -69,6 +69,14 @@ border-top: 0px;
   z-index: -10;
 }
 
+.btn-disabled {
+  pointer-events: none !important;
+}
+
+.list-group-item{
+  background-color: transparent !important;
+}
+
 
 // ----------------------- 動畫 ----------------------- //
 // 卡片動畫
@@ -340,8 +348,8 @@ td {
   .horizontal-scroll .card {
     width: calc(100% / 4 - 1rem);
   }
-  .cart-container,
-  .cart-summery-container {
-    min-height: calc(100vh - 56px - 76px);
-  }
+  // .cart-container,
+  // .cart-summery-container {
+  //   min-height: calc(100vh - 56px - 76px);
+  // }
 }

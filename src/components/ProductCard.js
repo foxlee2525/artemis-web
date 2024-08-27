@@ -1,28 +1,29 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createAsyncMessage } from "../slice/messageSlice";
 import axios from "axios";
 
-function ProductCard({ product, cartData, getCart }) {
-  const handleAddToCart = async (e) => {
-    const existingCartItem = cartData?.carts?.find(
-      (item) => item.id === product.id
-    );
+function ProductCard({ product, getCart }) {
+  const dispatch = useDispatch();
 
+  const addToCart = async (item, cartQuantity) => {
     const data = {
       data: {
-        product_id: product.id,
-        qty: existingCartItem ? existingCartItem.qty + 1 : 1,
+        product_id: item.id,
+        qty: cartQuantity,
       },
     };
-
     try {
       const res = await axios.post(
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart`,
         data
       );
-      console.log(res);
+      // console.log(res);
+      dispatch(createAsyncMessage(res.data));
       getCart();
     } catch (error) {
       console.log(error);
+      dispatch(createAsyncMessage(error.response.data));
     }
   };
 
@@ -61,7 +62,7 @@ function ProductCard({ product, cartData, getCart }) {
               </div>
               <div
                 className='icon-hover fs-3'
-                onClick={(e) => handleAddToCart(e)}
+                onClick={() => addToCart(product, 1)}
               >
                 <i className='bi bi-file-plus-fill'></i>
               </div>

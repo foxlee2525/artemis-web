@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useOutletContext, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createAsyncMessage } from "../../slice/messageSlice";
 import axios from "axios";
+import RecommendedProducts from "../../components/RecommendedProducts";
 
 function Cart() {
-  const { cartData, getCart } = useOutletContext();
   const [loadingItems, setLoadingItems] = useState([]);
   const [hoveredItemId, setHoveredItemId] = useState(null);
-
   const dispatch = useDispatch();
+  // for 猜你喜歡 使用
+  const { cartData, getCart } = useOutletContext();
+  const [products, setProducts] = useState([]);
+
+  const getProducts = async (page = 1) => {
+    const productResult = await axios.get(
+      `/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`
+    );
+    const productData = productResult.data.products;
+    // console.log(productData);
+    setProducts(productData);
+  };
 
   const removeCartItem = async (id) => {
     try {
@@ -51,6 +62,10 @@ function Cart() {
     }
   };
 
+  useEffect(() => {
+    getProducts(1);
+  }, []);
+
   return (
     <div className='container'>
       {/* 購物車 */}
@@ -59,11 +74,11 @@ function Cart() {
           <div className='d-flex justify-content-between text-bg-dark rounded-top'>
             <h4 className='m-2'>您的購物車</h4>
           </div>
-          <div className='cart-detail rounded-bottom p-4'>
+          <div className='bg-light rounded-bottom p-4'>
             {cartData?.carts?.map((item) => {
               return (
                 <div
-                  className='d-flex justify-content-between mt-4 bg-light rounded-2'
+                  className='d-flex justify-content-between mt-4 rounded-2'
                   key={item.id}
                 >
                   <img
@@ -127,7 +142,7 @@ function Cart() {
           <div className='d-flex justify-content-between text-bg-dark rounded-top'>
             <h4 className='m-2'>訂單摘要</h4>
           </div>
-          <div className='cart-detail rounded-bottom p-4'>
+          <div className='bg-light rounded-bottom p-4'>
             <table className='table text-muted'>
               <tbody>
                 <tr>
@@ -187,6 +202,11 @@ function Cart() {
           </div>
         </div>
       </div>
+      <RecommendedProducts
+        products={products}
+        getCart={getCart}
+        cartData={cartData}
+      />
     </div>
   );
 }
