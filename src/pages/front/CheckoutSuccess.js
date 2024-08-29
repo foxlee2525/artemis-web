@@ -75,7 +75,11 @@ function CheckoutSuccess() {
               <ul className='list-group list-group-flush'>
                 {Object.values(orderData?.products || {}).map((item) => {
                   return (
-                    <li className='list-group-item px-0' key={item.id}>
+                    <li
+                      className='list-group-item px-0'
+                      key={item.id}
+                      style={{ backgroundColor: "transparent" }}
+                    >
                       <div className='d-flex mt-2'>
                         <img
                           src={item.product.imageUrl}
@@ -104,7 +108,10 @@ function CheckoutSuccess() {
                   );
                 })}
 
-                <li className='list-group-item px-0 pb-0'>
+                <li
+                  className='list-group-item px-0 pb-0'
+                  style={{ backgroundColor: "transparent" }}
+                >
                   <table className='table text-muted'>
                     <tbody>
                       <tr>
