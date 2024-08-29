@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+## Jewelry eCommerce Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 專案介紹：
 
-## Available Scripts
+這是一個以 React 開發的首飾網站，旨在提供使用者一個直觀且美觀的購物體驗。無論是瀏覽商品、了解品牌故事，還是將商品加入購物車並進行結帳，這個網站都能滿足使用者的需求。後台管理功能亦讓網站管理員可以輕鬆地管理商品、處理訂單和設定優惠碼。
 
-In the project directory, you can run:
+## 功能：
 
-### `npm start`
+- 商品列表瀏覽：用戶可以輕鬆瀏覽所有商品，篩選喜愛的首飾。
+- 品牌故事頁面：了解品牌背後的故事，增進與用戶的情感連結。
+- 商品詳細資訊：查看每件商品的詳細描述、價格與圖片。
+- 購物車功能：將選定的商品加入購物車，準備結帳。
+- 模擬結帳流程：完整模擬實際購物結帳流程，讓用戶體驗更真實。
+- 後台管理：管理員可通過後台添加新商品、設定優惠碼，並管理訂單。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 安裝與使用：
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. 請確認已安裝 node.js 和 npm
+2. 將專案 clone 到本地，輸入：
 
-### `npm test`
+   ```bash
+   git clone https://github.com/foxlee2525/restaurant-list.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. 在本地開啟之後，透過終端機進入資料夾，輸入：
 
-### `npm run build`
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. 安裝完畢後，繼續輸入：
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm run start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. 打開瀏覽器進入到以下網址
 
-### `npm run eject`
+   ```bash
+   http://localhost:3000
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6. 若欲暫停使用
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   ctrl + c
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 後台管理：
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. 可輸入以下網址進入後台
 
-## Learn More
+   ```bash
+   http://localhost:3000/#/login
+   ```
+   
+2. 後台登入資訊
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   - Email: foxlee2587@gmail.com
+   - Password: 123456
+   
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 開發工具：
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Node.js 16.20.2
+- React >18.3.1
+- React router dom >6.23.1
+- React Hook Form >7.52.0
+- axios >=1.7.2
+- Sass >1.77.2
+- Bootstrap 5.3.3
+- reat-fontawesome >0.2.2
