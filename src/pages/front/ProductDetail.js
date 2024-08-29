@@ -106,7 +106,9 @@ function ProductDetail({}) {
             {product.category}
           </NavLink>
         </li>
-        <li className='breadcrumb-item active'>{product.title}</li>
+        <li className='breadcrumb-item category-product active'>
+          {product.title}
+        </li>
       </ol>
       <div className='row justify-content-between mb-7'>
         <div className='col-md-7'>

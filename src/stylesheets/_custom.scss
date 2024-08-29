@@ -77,6 +77,11 @@ border-top: 0px;
   background-color: transparent !important;
 }
 
+// banner
+.banner {
+  height: 20vh;
+}
+
 
 // ----------------------- 動畫 ----------------------- //
 // 卡片動畫
@@ -132,20 +137,25 @@ td {
 }
 
 
-// Navbar 文字動畫
-.nav-link{
+// Navbar + 產品列表 文字動畫
+.nav-link,
+.category-product{
   display: inline-block;
   transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
-.nav-link:hover {
+.nav-link:hover,
+.category-product:hover {
   color: $secondary !important;
   transform: scale(1.1);
   font-weight: $font-weight-bold;
 }
-.nav-link.active {
+.nav-link.active,
+.category-product.active {
   color: $secondary !important;
   transform: scale(1.1);
   font-weight: $font-weight-bold;
+  cursor: default;
 }
 
 // 加入購物車按鈕動畫
@@ -348,8 +358,13 @@ td {
   .horizontal-scroll .card {
     width: calc(100% / 4 - 1rem);
   }
-  // .cart-container,
-  // .cart-summery-container {
-  //   min-height: calc(100vh - 56px - 76px);
-  // }
+  .banner {
+    height: 40vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  .banner {
+      height: 50vh;
+    }
 }
