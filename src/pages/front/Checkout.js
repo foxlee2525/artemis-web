@@ -75,7 +75,9 @@ function Checkout() {
   useEffect(() => {
     async function getAddressData() {
       try {
-        const response = await localAxios.get("/assets/taiwan.json");
+        const response = await localAxios.get(
+          `${process.env.PUBLIC_URL}/assets/taiwan.json`
+        );
         setAddressData(response.data);
       } catch (error) {
         console.error(error);

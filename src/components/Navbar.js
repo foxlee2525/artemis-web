@@ -43,7 +43,7 @@ function Navbar({ cartData }) {
           {/* LOGO */}
           <NavLink className='navbar-brand mx-auto' to='/'>
             <img
-              src='/artemis_logo.png'
+              src={`${process.env.PUBLIC_URL}/artemis_logo.png`}
               style={{ width: "160px", height: "auto" }}
               alt='Logo'
             />
@@ -104,7 +104,7 @@ function Navbar({ cartData }) {
               </li>
             </ul>
           </div>
-          
+
           {/* Cart */}
           <div className='d-lg-flex position-relative d-none'>
             <NavLink
