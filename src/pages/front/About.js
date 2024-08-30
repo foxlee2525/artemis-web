@@ -28,7 +28,7 @@ function About() {
       </div>
       {/* 主要內容 */}
       <div className='container'>
-        <div className='pt-4 pb-7'>
+        <div className='pt-4 pb-7 mx-2 mx-md-0'>
           {/* 第一組圖片和文字 */}
           <div className='row align-items-center bg-light rounded-3 p-4'>
             <div className='col-md-6'>

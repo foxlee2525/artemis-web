@@ -90,7 +90,7 @@ function Home() {
 
       {/* 品牌故事 */}
       <div className='container mt-5'>
-        <div className='row align-items-center bg-light rounded-3 p-4'>
+        <div className='row align-items-center bg-light rounded-3 p-4 mx-0'>
           <div className='col-md-6'>
             <img
               src='https://images.unsplash.com/photo-1584811644165-33db3b146db5'

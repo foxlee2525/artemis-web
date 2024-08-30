@@ -83,7 +83,7 @@ function Navbar({ cartData }) {
           {/* Nav-item */}
           <div className='collapse navbar-collapse' id='navbarNav'>
             <ul className='navbar-nav me-auto'>
-              <li className='nav-item ps-3 ps-lg-0 d-flex justify-content-center'>
+              <li className='nav-item ps-0 ps-lg-0 d-flex justify-content-center'>
                 <NavLink
                   className={`nav-link ${
                     location.pathname === "/products" ? "active" : ""
@@ -94,7 +94,7 @@ function Navbar({ cartData }) {
                   產品列表
                 </NavLink>
               </li>
-              <li className='nav-item ps-3 ps-lg-0 d-flex justify-content-center'>
+              <li className='nav-item ps-0 ps-lg-0 d-flex justify-content-center'>
                 <NavLink
                   className={`nav-link ${
                     location.pathname === "/about" ? "active" : ""
@@ -105,7 +105,7 @@ function Navbar({ cartData }) {
                   關於彌絲
                 </NavLink>
               </li>
-              <li className='nav-item ps-3 ps-lg-0 d-flex justify-content-center'>
+              <li className='nav-item ps-0 ps-lg-0 d-flex justify-content-center'>
                 <NavLink
                   className={`nav-link ${
                     location.pathname === "/contact" ? "active" : ""
