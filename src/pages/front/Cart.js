@@ -62,6 +62,13 @@ function Cart() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     getProducts(1);
   }, []);
@@ -196,6 +203,7 @@ function Cart() {
               className={`btn w-100 mt-4 rounded-2 py-3 ${
                 loadingItems.length > 0 ? "btn-primary disabled" : "btn-primary"
               }`}
+              onClick={() => scrollToTop()}
             >
               繼續付款
             </Link>

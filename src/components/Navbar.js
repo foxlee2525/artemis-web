@@ -18,6 +18,13 @@ function Navbar({ cartData }) {
     }
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutSide);
     return () => document.removeEventListener("click", handleClickOutSide);
@@ -66,6 +73,7 @@ function Navbar({ cartData }) {
               cartData={cartData}
               showCartDropdown={showCartDropdown}
               handleCartClick={handleCartClick}
+              scrollToTop={scrollToTop}
             />
           </div>
 
@@ -78,6 +86,7 @@ function Navbar({ cartData }) {
                     location.pathname === "/products" ? "active" : ""
                   }`}
                   to='/products'
+                  onClick={() => scrollToTop()}
                 >
                   產品列表
                 </NavLink>
@@ -88,6 +97,7 @@ function Navbar({ cartData }) {
                     location.pathname === "/about" ? "active" : ""
                   }`}
                   to='/about'
+                  onClick={() => scrollToTop()}
                 >
                   關於彌絲
                 </NavLink>
@@ -98,6 +108,7 @@ function Navbar({ cartData }) {
                     location.pathname === "/contact" ? "active" : ""
                   }`}
                   to='/contact'
+                  onClick={() => scrollToTop()}
                 >
                   聯絡我們
                 </NavLink>
@@ -122,6 +133,7 @@ function Navbar({ cartData }) {
               cartData={cartData}
               showCartDropdown={showCartDropdown}
               handleCartClick={handleCartClick}
+              scrollToTop={scrollToTop}
             />
           </div>
         </nav>

@@ -17,6 +17,13 @@ function CheckoutConfirm() {
     formState: { errors },
   } = useForm({ mode: "onTouched" });
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     const getOrderData = async () => {
       try {
@@ -54,9 +61,11 @@ function CheckoutConfirm() {
         setIsLoading(false);
         if (paymentMethod === "ATM") {
           alert("訂單已成功送出！");
+          scrollToTop();
           navigate(`/cart/checkout-success/${orderId}`);
         } else {
           alert("已成功付款！");
+          scrollToTop();
           navigate(`/cart/checkout-success/${orderId}`);
         }
       }, 3000);
@@ -310,7 +319,9 @@ function CheckoutConfirm() {
                   )}
                   <button
                     type='submit'
-                    className='btn btn-primary mt-3 py-3 w-100 rounded-2'
+                    className={`btn btn-primary mt-3 py-3 w-100 rounded-2 ${
+                      isLoading ? "bounceBack" : ""
+                    }`}
                     disabled={isLoading}
                     onClick={onSubmitPayment}
                   >

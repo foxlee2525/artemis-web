@@ -47,9 +47,11 @@ function Checkout() {
       );
       // console.log(res);
       setIsLoading(false);
+      scrollToTop();
       navigate(`/cart/checkout-confirm/${res.data.orderId}`);
     } catch (error) {
       setIsLoading(false);
+      scrollToTop();
       console.log(error);
     }
   };
@@ -71,6 +73,13 @@ function Checkout() {
     control,
     name: "address",
   });
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     async function getAddressData() {
@@ -124,7 +133,11 @@ function Checkout() {
       <Loading isLoading={isLoading} />
       <div className='pt-5 pb-7'>
         <div className='container'>
-          <Link to='/cart' className='btn text-dark py-3 mt-md-0 mt-3'>
+          <Link
+            to='/cart'
+            className='btn text-dark py-3 mt-md-0 mt-3'
+            onClick={() => scrollToTop()}
+          >
             <i className='bi bi-arrow-left'></i> 返回購物車
           </Link>
 
@@ -414,7 +427,11 @@ function Checkout() {
                     </div>
                     <button
                       type='submit'
-                      className='btn btn-primary mt-3 py-3 w-100 rounded-2'
+                      className={`btn btn-primary mt-3 py-3 w-100 rounded-2 ${
+                        isLoading
+                          ? "button_addToCart btn btn-primary w-100 rounded-2 py-3 bounceBack"
+                          : "button_addToCart btn btn-primary w-100 rounded-2 py-3"
+                      }`}
                       disabled={isLoading}
                     >
                       {isLoading ? "提交資料中..." : "確認資料"}

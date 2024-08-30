@@ -32,6 +32,13 @@ function CheckoutSuccess() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     getOrder(orderId);
   }, [orderId]);
@@ -62,7 +69,7 @@ function CheckoutSuccess() {
               type='button'
               className='btn btn-primary mt-3 px-6 py-3 w-lg-50 w-100 rounded-2'
             >
-              <Link to='/' className='text-white'>
+              <Link to='/' className='text-white' onClick={() => scrollToTop()}>
                 返回首頁
               </Link>
             </button>

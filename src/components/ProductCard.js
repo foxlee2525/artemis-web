@@ -57,9 +57,9 @@ function ProductCard({ product, getCart }) {
               <span>NT$ {product.price}</span>
             </div>
             <div className='d-flex'>
-              <div className='icon-hover fs-3'>
+              {/* <div className='icon-hover fs-3'>
                 <i className='bi bi-bookmark-heart-fill'></i>
-              </div>
+              </div>*/}
               <div
                 className='icon-hover fs-3'
                 onClick={() => addToCart(product, 1)}

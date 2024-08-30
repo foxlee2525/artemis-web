@@ -25,6 +25,13 @@ function Home() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     getProductAll();
   }, []);
@@ -54,10 +61,11 @@ function Home() {
           }}
         ></div>
         <div className='text-center position-relative'>
-          <h1 className='text-white'>發現，不一樣的花漾年華</h1>
+          <h1 className='text-white'>A R T E M I S</h1>
           <NavLink
             to='/products'
             className='btn btn-primary rounded-2 text-white mt-4'
+            onClick={() => scrollToTop()}
           >
             立刻選購
           </NavLink>
@@ -100,7 +108,11 @@ function Home() {
             <h6 className='fw-bold pt-2'>
               彌絲，象徵著我們對美的追求，及每一位女性自信與優雅的展現。
             </h6>
-            <NavLink to='/about' className='btn btn-primary mt-3'>
+            <NavLink
+              to='/about'
+              className='btn btn-primary mt-3'
+              onClick={() => scrollToTop()}
+            >
               閱讀更多
             </NavLink>
           </div>
