@@ -13,11 +13,10 @@ function Message() {
           return (
             <div
               key={message.id}
-              className='toast show'
+              className={`toast show ${message.isExiting ? "exiting" : ""}`}
               role='alert'
               aria-live='assertive'
               aria-atomic='true'
-              data-delay='3000'
             >
               <div className={`toast-header text-white bg-${message.type}`}>
                 <strong className='me-auto'>{message.title}</strong>

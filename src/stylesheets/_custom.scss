@@ -154,17 +154,9 @@ td {
   cursor: default;
 }
 
-// 加入購物車按鈕動畫
-.button_addToCart {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  transform-origin: center center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.button_addToCart.bounceBack {
+// 按鈕彈跳動畫
+.bounceBack {
   transform: scale(0.95);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   animation: bounceBack 0.5s ease forwards;
 }
 
@@ -183,33 +175,31 @@ td {
   }
 }
 
-// 彈性動畫
-.button_addToCart.bouncing {
-  animation: bounceBack 0.5s ease forwards;
-}
-
 // 購物車動畫
 .icon-hover{
   color: $primary !important;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 .icon-hover:hover{
   color: $secondary !important;
-  animation: shake 0.5s;
+  animation: shake 0.5s ease;
 }
 @keyframes shake {
   0%,
   100% {
     transform: rotate(0deg);
   }
-  25% {
-    transform: rotate(-5deg);
+  20% {
+    transform: rotate(-8deg);
   }
-  75% {
-    transform: rotate(5deg);
+  50% {
+    transform: rotate(8deg);
+  }
+  80% {
+    transform: rotate(-8deg);
   }
 }
-// 購物車 cartDropDown 動畫
+// 購物車 cartDropDown + 加入商品 動畫
 .cart-dropdown {
   width: 300px;
   top: 50px;
@@ -239,6 +229,38 @@ td {
   }
   to {
     transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+.toast-container .toast {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.toast-container .toast.exiting {
+  animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(10px);
     opacity: 0;
   }
 }
