@@ -81,7 +81,11 @@ function Products() {
       <div className='container mt-md-5 mt-3 mb-7'>
         <Loading isLoading={isLoading} />
         <ol className='breadcrumb mb-4 ms-4 ms-md-2'>
-          <li className='breadcrumb-item text-primary'>首頁</li>
+          <li className='breadcrumb-item text-primary'>
+            <NavLink to='/' className='nav-link'>
+              首頁
+            </NavLink>
+          </li>
           <li className='breadcrumb-item'>
             <NavLink to='/products' className='nav-link'>
               產品

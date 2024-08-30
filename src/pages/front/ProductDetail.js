@@ -91,9 +91,16 @@ function ProductDetail({}) {
   return (
     <div className='container border-bottom border-gray pt-10 mb-10'>
       <ol className='breadcrumb mb-4 text-primary'>
-        <li className='breadcrumb-item'>首頁</li>
-        <li className='breadcrumb-item'>產品</li>
-        <li className='breadcrumb-item'>{product.category}</li>
+        <li className='breadcrumb-item'>
+          <NavLink to='/' className='nav-link'>
+            首頁
+          </NavLink>
+        </li>
+        <li className='breadcrumb-item'>
+          <NavLink to='/products' className='nav-link'>
+            產品
+          </NavLink>
+        </li>
         <li className='breadcrumb-item category-product active'>
           {product.title}
         </li>
