@@ -28,7 +28,7 @@ function ProcessSteps() {
 
   return (
     <div className='container pt-8'>
-      <ul className='d-flex justify-content-around w-md-75 w-100 w-lg-50 mx-auto'>
+      <ul className='d-flex justify-content-around  w-md-75 w-100 w-lg-50 mx-auto px-0'>
         {steps.map(({ label, step }) => (
           <li key={step} className='d-flex flex-column align-items-center'>
             <div
