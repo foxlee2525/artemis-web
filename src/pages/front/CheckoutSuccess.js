@@ -49,7 +49,7 @@ function CheckoutSuccess() {
 
   return (
     <div className='container'>
-      <div className='mt-5 mb-7'>
+      <div className='mt-5 mb-7 mx-2'>
         <div className='row'>
           <div className='col-md-6 rounded-2 bg-light bg-md-transparent px-4 py-4 mb-4 px-md-0 py-md-0 mb-md-0'>
             <h2>訂單已成功送出！</h2>

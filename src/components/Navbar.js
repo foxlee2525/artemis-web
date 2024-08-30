@@ -57,7 +57,10 @@ function Navbar({ cartData }) {
           </NavLink>
 
           {/* Cart */}
-          <div className='d-flex position-relative d-lg-none'>
+          <div
+            className='d-flex position-relative d-lg-none'
+            style={{ paddingRight: "12px" }}
+          >
             <NavLink
               className='icon-hover position-relative'
               onClick={handleCartClick}
