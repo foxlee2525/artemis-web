@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import CartDropdown from "./CartDropdown";
 
 function Navbar({ cartData }) {
   const [showCartDropdown, setShowCartDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleCartClick = useCallback((e, shouldScrollToTop) => {
     e.stopPropagation();
@@ -14,6 +15,11 @@ function Navbar({ cartData }) {
     }
     setShowCartDropdown((prevShowCartDropdown) => !prevShowCartDropdown);
   }, []);
+
+  const handleNavClick = (path) => {
+    scrollToTop();
+    navigate(path);
+  };
 
   const handleClickOutSide = useCallback((e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -59,7 +65,7 @@ function Navbar({ cartData }) {
             />
           </NavLink>
 
-          {/* Cart */}
+          {/* Cart(mobile) */}
           <div
             className='d-flex position-relative d-lg-none'
             style={{ paddingRight: "12px" }}
@@ -79,6 +85,7 @@ function Navbar({ cartData }) {
               cartData={cartData}
               showCartDropdown={showCartDropdown}
               handleCartClick={handleCartClick}
+              ref={dropdownRef}
             />
           </div>
 
@@ -87,33 +94,39 @@ function Navbar({ cartData }) {
             <ul className='navbar-nav me-auto'>
               <li className='nav-item ps-0 ps-lg-0 d-flex justify-content-center'>
                 <NavLink
+                  data-bs-toggle='collapse'
+                  data-bs-target='.navbar-collapse.show'
                   className={`nav-link ${
                     location.pathname === "/products" ? "active" : ""
                   }`}
                   to='/products'
-                  onClick={() => scrollToTop()}
+                  onClick={() => handleNavClick("/products")}
                 >
                   產品列表
                 </NavLink>
               </li>
               <li className='nav-item ps-0 ps-lg-0 d-flex justify-content-center'>
                 <NavLink
+                  data-bs-toggle='collapse'
+                  data-bs-target='.navbar-collapse.show'
                   className={`nav-link ${
                     location.pathname === "/about" ? "active" : ""
                   }`}
                   to='/about'
-                  onClick={() => scrollToTop()}
+                  onClick={() => handleNavClick("/about")}
                 >
                   關於彌絲
                 </NavLink>
               </li>
               <li className='nav-item ps-0 ps-lg-0 d-flex justify-content-center'>
                 <NavLink
+                  data-bs-toggle='collapse'
+                  data-bs-target='.navbar-collapse.show'
                   className={`nav-link ${
                     location.pathname === "/contact" ? "active" : ""
                   }`}
                   to='/contact'
-                  onClick={() => scrollToTop()}
+                  onClick={() => handleNavClick("/contact")}
                 >
                   聯絡我們
                 </NavLink>
@@ -121,7 +134,7 @@ function Navbar({ cartData }) {
             </ul>
           </div>
 
-          {/* Cart */}
+          {/* Cart(Desktop) */}
           <div className='d-lg-flex position-relative d-none'>
             <NavLink
               className='icon-hover position-relative'
@@ -138,6 +151,7 @@ function Navbar({ cartData }) {
               cartData={cartData}
               showCartDropdown={showCartDropdown}
               handleCartClick={handleCartClick}
+              ref={dropdownRef}
             />
           </div>
         </nav>

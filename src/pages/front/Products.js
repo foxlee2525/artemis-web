@@ -92,9 +92,37 @@ function Products() {
             </NavLink>
           </li>
         </ol>
-        {/* 左側分類選單 */}
+
+        {/* 左側分類單(mobile) */}
         <div className='row'>
-          <div className='col-md-3 mb-4 text-primary'>
+          <div className='col-12 d-md-none mb-4 text-center'>
+            <div className='d-flex justify-content-center flex-wrap'>
+              <div
+                className={`category-product-mobile text-primary rounded-5 m-3 p-2 ${
+                  currentCategory === "全部商品" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("全部商品")}
+              >
+                全部商品
+              </div>
+              {[...new Set(productAll.map((product) => product.category))].map(
+                (category, index) => (
+                  <div
+                    key={index}
+                    className={`category-product-mobile text-primary rounded-5 m-3 py-2 px-3 ${
+                      currentCategory === category ? "active" : ""
+                    }`}
+                    onClick={() => handleCategoryClick(category)}
+                  >
+                    {category}
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* 左側分類單(desktop) */}
+          <div className='col-md-3 mb-4 text-primary d-none d-md-block'>
             <div className='bg-light rounded-2 p-3'>
               <h5
                 className={`mb-2 ${

@@ -154,6 +154,28 @@ td {
   cursor: default;
 }
 
+.category-product-mobile {
+  display: inline-block;
+  background-color: transparent !important;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.category-product-mobile:hover {
+  color: $white !important;
+  background-color: $secondary !important;
+  transform: scale(1.1);
+  font-weight: $font-weight-bold;
+}
+
+.category-product-mobile.active {
+  color: $white !important;
+  background-color: $secondary !important;
+  transform: scale(1.1);
+  font-weight: $font-weight-bold;
+  cursor: default;
+}
+
 // 按鈕彈跳動畫
 .bounceBack {
   transform: scale(0.95);
