@@ -2,7 +2,7 @@ import { useState, useEffect, forwardRef } from "react";
 import { NavLink } from "react-router-dom";
 
 const CartDropdown = forwardRef(
-  ({ cartData, showCartDropdown, handleCartClick, scrollToTop }, ref) => {
+  ({ cartData, showCartDropdown, handleCartClick }, ref) => {
     const [isVisible, setIsVisible] = useState(showCartDropdown);
 
     // CSS Display—none 沒辦法完整移除 html，所以改用判定方式執行
@@ -12,7 +12,6 @@ const CartDropdown = forwardRef(
       } else {
         const timeoutId = setTimeout(() => {
           setIsVisible(false);
-          scrollToTop();
         }, 500); // 這邊時間要跟 CSS 動畫一致
         return () => clearTimeout(timeoutId);
       }
@@ -62,7 +61,7 @@ const CartDropdown = forwardRef(
                     <NavLink
                       to='/cart'
                       className='btn btn-primary w-100'
-                      onClick={handleCartClick}
+                      onClick={(e) => handleCartClick(e, true)}
                     >
                       查看購物車
                     </NavLink>
@@ -77,7 +76,7 @@ const CartDropdown = forwardRef(
                     <NavLink
                       to='/products'
                       className='btn btn-primary w-100'
-                      onClick={handleCartClick}
+                      onClick={(e) => handleCartClick(e, true)}
                     >
                       繼續購物
                     </NavLink>

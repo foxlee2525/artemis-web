@@ -7,8 +7,11 @@ function Navbar({ cartData }) {
   const dropdownRef = useRef(null);
   const location = useLocation();
 
-  const handleCartClick = useCallback((e) => {
+  const handleCartClick = useCallback((e, shouldScrollToTop) => {
     e.stopPropagation();
+    if (shouldScrollToTop) {
+      scrollToTop();
+    }
     setShowCartDropdown((prevShowCartDropdown) => !prevShowCartDropdown);
   }, []);
 
@@ -76,7 +79,6 @@ function Navbar({ cartData }) {
               cartData={cartData}
               showCartDropdown={showCartDropdown}
               handleCartClick={handleCartClick}
-              scrollToTop={scrollToTop}
             />
           </div>
 
@@ -136,7 +138,6 @@ function Navbar({ cartData }) {
               cartData={cartData}
               showCartDropdown={showCartDropdown}
               handleCartClick={handleCartClick}
-              scrollToTop={scrollToTop}
             />
           </div>
         </nav>
