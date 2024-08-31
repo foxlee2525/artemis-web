@@ -41,7 +41,7 @@ function ProductCard({ product, getCart }) {
         backgroundColor: "#faf9f8",
       }}
     >
-      <div className='p-3'>
+      <div className='p-2 p-sm-3'>
         <Link to={`/product/${product.id}`} onClick={() => scrollToTop()}>
           <img
             src={product?.imageUrl}
@@ -50,16 +50,13 @@ function ProductCard({ product, getCart }) {
             alt={product.title}
           />
         </Link>
-        <div className='card-body px-0'>
-          <div className='d-flex align-items-center justify-content-between mt-2'>
+        <div className='card-body pt-2 px-0 pb-0 pt-sm-3'>
+          <div className='d-flex align-items-center justify-content-between'>
             <div>
               <h6 className='card-title mb-1'>{product.title}</h6>
               <span>NT$ {product.price}</span>
             </div>
             <div className='d-flex'>
-              {/* <div className='icon-hover fs-3'>
-                <i className='bi bi-bookmark-heart-fill'></i>
-              </div>*/}
               <div
                 className='icon-hover fs-3'
                 onClick={() => addToCart(product, 1)}

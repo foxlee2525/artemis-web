@@ -6,9 +6,8 @@ import Loading from "../../components/Loading";
 import axios from "axios";
 
 function Home() {
-  const { cartData, setCartData, getCart } = useOutletContext();
+  const { cartData, setCartData, getCart, isLoading, setIsLoading } = useOutletContext();
   const [productAll, setProductAll] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const getProductAll = async () => {
     setIsLoading(true);
