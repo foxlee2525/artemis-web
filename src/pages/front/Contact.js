@@ -29,7 +29,7 @@ function Contact() {
       {/* 主要內容 */}
       <div className='container'>
         <div className='pt-4 pb-7'>
-          <div className='row align-items-center bg-light rounded-3 p-4'>
+          <div className='row align-items-center bg-light rounded-3 p-4 m-0'>
             <div className='col-md-6'>
               <img
                 src='https://images.unsplash.com/photo-1603974372039-adc49044b6bd?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
