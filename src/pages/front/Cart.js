@@ -82,66 +82,88 @@ function Cart() {
             <h4 className='m-2'>您的購物車</h4>
           </div>
           <div className='bg-light rounded-bottom p-4'>
-            {cartData?.carts?.map((item) => {
-              return (
-                <div
-                  className='d-flex justify-content-between mt-4 rounded-2'
-                  key={item.id}
+            {!cartData.carts || cartData.carts.length === 0 ? (
+              <div className='text-center'>
+                <h4 className='fw-bold mt-4'>目前購物車沒有任何商品</h4>
+                <Link
+                  to='/products'
+                  className='btn w-25 mt-4 rounded-2 py-3 btn-primary'
+                  onClick={() => scrollToTop()}
                 >
-                  <img
-                    className='rounded-4 p-2'
-                    src={item.product.imageUrl}
-                    alt=''
-                    style={{
-                      width: "120px",
-                      height: "120px",
-                    }}
-                  />
-                  <div className='d-flex justify-content-between align-items-center w-100 p-3'>
-                    <p className='mb-0 fw-bold'>{item.product.title}</p>
-                    <div className='d-flex flex-column flex-md-row align-items-center w-md-50'>
-                      <p className='mb-0 fw-bold w-md-75'>
-                        NT$ {item.final_total}
+                  繼續購物
+                </Link>
+              </div>
+            ) : (
+              cartData?.carts?.map((item) => {
+                return (
+                  <div
+                    className='d-flex justify-content-between mt-4 rounded-2'
+                    key={item.id}
+                  >
+                    <img
+                      className='rounded-4 p-2'
+                      src={item.product.imageUrl}
+                      alt=''
+                      style={{
+                        width: "120px",
+                        height: "120px",
+                      }}
+                    />
+                    <div className='d-flex justify-content-between align-items-center w-100 p-3'>
+                      <p
+                        className='mb-0 fw-bold'
+                        style={{
+                          minWidth: "100px",
+                          maxWidth: "120px",
+                          wordWrap: "break-word",
+                        }}
+                      >
+                        {item.product.title}
                       </p>
-                      <div className='input-group mt-2 m-md-0'>
-                        <select
-                          name=''
-                          className='form-select'
-                          id=''
-                          value={item.qty}
-                          disabled={loadingItems.includes(item.id)}
-                          onChange={(e) => {
-                            updateCartItem(item, e.target.value * 1);
-                          }}
-                        >
-                          {[...new Array(20)].map((i, num) => {
-                            return (
-                              <option value={num + 1} key={num}>
-                                {num + 1}
-                              </option>
-                            );
-                          })}
-                        </select>
+                      <div className='d-flex flex-column flex-md-row align-items-center w-md-50'>
+                        <p className='mb-0 fw-bold w-md-75'>
+                          NT$ {item.final_total}
+                        </p>
+                        <div className='input-group mt-2 m-md-0'>
+                          <select
+                            name=''
+                            className='form-select'
+                            id=''
+                            value={item.qty}
+                            disabled={loadingItems.includes(item.id)}
+                            onChange={(e) => {
+                              updateCartItem(item, e.target.value * 1);
+                            }}
+                          >
+                            {[...new Array(20)].map((i, num) => {
+                              return (
+                                <option value={num + 1} key={num}>
+                                  {num + 1}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
                       </div>
+                      <button
+                        type='button'
+                        className='d-flex btn fs-4'
+                        style={{ top: "16px", right: "16px" }}
+                        onMouseEnter={() => setHoveredItemId(item.id)}
+                        onMouseLeave={() => setHoveredItemId(null)}
+                        onClick={() => removeCartItem(item.id)}
+                      >
+                        {hoveredItemId === item.id ? (
+                          <i className='bi bi-trash3-fill'></i>
+                        ) : (
+                          <i className='bi bi-trash3'></i>
+                        )}
+                      </button>
                     </div>
-                    <button
-                      type='button'
-                      className='d-flex btn fs-4'
-                      style={{ top: "16px", right: "16px" }}
-                      onMouseEnter={() => setHoveredItemId(item.id)}
-                      onMouseLeave={() => setHoveredItemId(null)}
-                      onClick={() => removeCartItem(item.id)}
-                    >
-                      {hoveredItemId === item.id ? (
-                        <i className='bi bi-trash3-fill'></i>
-                      ) : (
-                        <i className='bi bi-trash3'></i>
-                      )}
-                    </button>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </div>
         {/* 訂單摘要 */}
