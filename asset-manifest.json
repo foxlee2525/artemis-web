@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/artemis-web/static/css/main.dfa1144c.css",
-    "main.js": "/artemis-web/static/js/main.80946682.js",
+    "main.js": "/artemis-web/static/js/main.f6cf9ff2.js",
     "static/js/453.7c7184a7.chunk.js": "/artemis-web/static/js/453.7c7184a7.chunk.js",
     "static/media/bootstrap-icons.woff?": "/artemis-web/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
     "static/media/bootstrap-icons.woff2?": "/artemis-web/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
     "index.html": "/artemis-web/index.html",
     "main.dfa1144c.css.map": "/artemis-web/static/css/main.dfa1144c.css.map",
-    "main.80946682.js.map": "/artemis-web/static/js/main.80946682.js.map",
+    "main.f6cf9ff2.js.map": "/artemis-web/static/js/main.f6cf9ff2.js.map",
     "453.7c7184a7.chunk.js.map": "/artemis-web/static/js/453.7c7184a7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dfa1144c.css",
-    "static/js/main.80946682.js"
+    "static/js/main.f6cf9ff2.js"
   ]
 }
